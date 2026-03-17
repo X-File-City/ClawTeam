@@ -1,0 +1,190 @@
+{
+  "id": "clawteam-onboarding",
+  "title": "ClawTeam: Multi-Agent AI Orchestration",
+  "description": "A guided tour of ClawTeam's architecture — the decentralized framework for coordinating AI agent swarms through file-based communication, task boards, and git worktree isolation.",
+  "version": "1.0.0",
+  "steps": [
+    {
+      "id": "overview",
+      "title": "Welcome to ClawTeam",
+      "description": "ClawTeam is a framework-agnostic CLI for multi-agent AI coordination. It enables teams of AI agents (Claude Code, Codex, or any CLI agent) to self-organize, communicate, and solve complex problems together — with no databases, no message queues, just files. The entire codebase lives under the clawteam/ package, with supporting docs, assets, and Claude Code skill definitions.",
+      "focusDirectory": "",
+      "colorMode": "fileTypes"
+    },
+    {
+      "id": "core-models",
+      "title": "Core Team Management",
+      "description": "The team/ directory is the heart of ClawTeam. It defines the data models (TeamConfig, TaskItem, TeamMessage), manages team lifecycle, handles inter-agent messaging via mailboxes, tracks task dependencies, and coordinates agent idle/shutdown behavior. Everything revolves around three primitives: teams, tasks, and messages.",
+      "focusDirectory": "clawteam/team",
+      "colorMode": "fileTypes",
+      "highlightLayers": [
+        {
+          "id": "data-models",
+          "name": "Data Models & Task Store",
+          "color": "#3b82f6",
+          "items": [
+            { "path": "clawteam/team/models.py", "type": "file" },
+            { "path": "clawteam/team/tasks.py", "type": "file" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        },
+        {
+          "id": "team-ops",
+          "name": "Team Operations",
+          "color": "#10b981",
+          "items": [
+            { "path": "clawteam/team/manager.py", "type": "file" },
+            { "path": "clawteam/team/lifecycle.py", "type": "file" },
+            { "path": "clawteam/team/mailbox.py", "type": "file" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        }
+      ]
+    },
+    {
+      "id": "agent-spawning",
+      "title": "Agent Spawning",
+      "description": "The spawn/ directory handles launching agents into isolated environments. The TmuxBackend spawns each agent in its own tmux window for visual monitoring, while SubprocessBackend runs agents as background processes. The prompt builder injects coordination instructions so agents automatically know how to check tasks, report completion, and message teammates.",
+      "focusDirectory": "clawteam/spawn",
+      "colorMode": "fileTypes",
+      "highlightLayers": [
+        {
+          "id": "spawn-backends",
+          "name": "Spawn Backends",
+          "color": "#f59e0b",
+          "items": [
+            { "path": "clawteam/spawn/tmux_backend.py", "type": "file" },
+            { "path": "clawteam/spawn/subprocess_backend.py", "type": "file" },
+            { "path": "clawteam/spawn/base.py", "type": "file" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        },
+        {
+          "id": "spawn-support",
+          "name": "Prompt & Session Management",
+          "color": "#8b5cf6",
+          "items": [
+            { "path": "clawteam/spawn/prompt.py", "type": "file" },
+            { "path": "clawteam/spawn/sessions.py", "type": "file" },
+            { "path": "clawteam/spawn/registry.py", "type": "file" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        }
+      ]
+    },
+    {
+      "id": "transport-layer",
+      "title": "Transport Layer",
+      "description": "ClawTeam's transport layer abstracts how agents communicate. The default FileTransport stores messages as JSON files under ~/.clawteam — atomic, crash-safe, zero-dependency. The P2PTransport uses ZeroMQ for low-latency cross-machine messaging with automatic fallback to file transport for offline agents.",
+      "focusDirectory": "clawteam/transport",
+      "colorMode": "fileTypes",
+      "highlightLayers": [
+        {
+          "id": "transport-files",
+          "name": "Transport Implementations",
+          "color": "#ec4899",
+          "items": [
+            { "path": "clawteam/transport/base.py", "type": "file" },
+            { "path": "clawteam/transport/file.py", "type": "file" },
+            { "path": "clawteam/transport/p2p.py", "type": "file" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        }
+      ]
+    },
+    {
+      "id": "workspace-isolation",
+      "title": "Workspace Isolation",
+      "description": "Each spawned agent gets its own git worktree — an isolated copy of the repository on a dedicated branch (clawteam/{team}/{agent}). This means multiple agents can work on the same codebase simultaneously with zero merge conflicts. The WorkspaceManager handles creation, checkpointing (auto-commit), merging results back, and cleanup.",
+      "focusDirectory": "clawteam/workspace",
+      "colorMode": "fileTypes",
+      "highlightLayers": [
+        {
+          "id": "workspace-files",
+          "name": "Workspace Management",
+          "color": "#06b6d4",
+          "items": [
+            { "path": "clawteam/workspace/manager.py", "type": "file" },
+            { "path": "clawteam/workspace/models.py", "type": "file" },
+            { "path": "clawteam/workspace/git.py", "type": "file" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        }
+      ]
+    },
+    {
+      "id": "monitoring",
+      "title": "Monitoring & Dashboards",
+      "description": "The board/ directory provides multiple ways to observe your agent swarm. The terminal renderer creates rich kanban boards and status tables. A live mode auto-refreshes. The web UI (served via board serve) offers a browser-based dashboard. The collector aggregates real-time data on team status, task progress, and message counts.",
+      "focusDirectory": "clawteam/board",
+      "colorMode": "fileTypes",
+      "highlightLayers": [
+        {
+          "id": "board-core",
+          "name": "Dashboard Core",
+          "color": "#ef4444",
+          "items": [
+            { "path": "clawteam/board/renderer.py", "type": "file" },
+            { "path": "clawteam/board/collector.py", "type": "file" },
+            { "path": "clawteam/board/server.py", "type": "file" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        }
+      ]
+    },
+    {
+      "id": "cli-commands",
+      "title": "CLI Entry Point",
+      "description": "All of ClawTeam's power is exposed through a single CLI built with Typer. The commands.py file (2,200+ lines) defines every command: team lifecycle (spawn-team, discover, cleanup), task management (create, update, wait), messaging (send, broadcast, receive), monitoring (board show, live, attach), and workspace operations. The __main__.py enables python -m clawteam invocation.",
+      "focusDirectory": "clawteam/cli",
+      "colorMode": "fileTypes",
+      "highlightLayers": [
+        {
+          "id": "cli-entry",
+          "name": "CLI Commands",
+          "color": "#f97316",
+          "items": [
+            { "path": "clawteam/cli/commands.py", "type": "file" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        }
+      ]
+    },
+    {
+      "id": "templates-and-config",
+      "title": "Templates & Configuration",
+      "description": "ClawTeam ships with pre-built team templates (like the 7-agent AI Hedge Fund in TOML format) and a persistent configuration system. The config module manages settings like transport type, workspace strategy, and default backends. Templates let you spin up complex multi-agent teams with a single command.",
+      "focusDirectory": "clawteam",
+      "colorMode": "fileTypes",
+      "highlightLayers": [
+        {
+          "id": "config-templates",
+          "name": "Config & Templates",
+          "color": "#84cc16",
+          "items": [
+            { "path": "clawteam/config.py", "type": "file" },
+            { "path": "clawteam/identity.py", "type": "file" },
+            { "path": "clawteam/templates", "type": "directory" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        }
+      ]
+    },
+    {
+      "id": "full-picture",
+      "title": "The Full Picture",
+      "description": "ClawTeam is a lightweight, decentralized multi-agent orchestration framework. No databases, no message queues — just files, git worktrees, and a clean CLI. Agents self-organize into teams, communicate through mailboxes, coordinate via shared task boards with dependency resolution, and work in full isolation. From the Python package to the Claude Code skills, everything is designed for zero-infrastructure agent swarms.",
+      "focusDirectory": "",
+      "colorMode": "fileTypes"
+    }
+  ]
+}
