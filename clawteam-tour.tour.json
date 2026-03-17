@@ -79,7 +79,7 @@
     {
       "id": "transport-layer",
       "title": "Transport Layer",
-      "description": "ClawTeam's transport layer abstracts how agents communicate. The default FileTransport stores messages as JSON files under ~/.clawteam — atomic, crash-safe, zero-dependency. The P2PTransport uses ZeroMQ for low-latency cross-machine messaging with automatic fallback to file transport for offline agents.",
+      "description": "ClawTeam's transport layer abstracts how agents communicate. The default FileTransport stores messages as JSON files under .clawteam — atomic, crash-safe, zero-dependency. The P2PTransport uses ZeroMQ for low-latency cross-machine messaging with automatic fallback to file transport for offline agents.",
       "focusDirectory": "clawteam/transport",
       "colorMode": "fileTypes",
       "highlightLayers": [
@@ -100,7 +100,7 @@
     {
       "id": "workspace-isolation",
       "title": "Workspace Isolation",
-      "description": "Each spawned agent gets its own git worktree — an isolated copy of the repository on a dedicated branch (clawteam/{team}/{agent}). This means multiple agents can work on the same codebase simultaneously with zero merge conflicts. The WorkspaceManager handles creation, checkpointing (auto-commit), merging results back, and cleanup.",
+      "description": "Each spawned agent gets its own git worktree — an isolated copy of the repository on a dedicated branch. This means multiple agents can work on the same codebase simultaneously with zero merge conflicts. The WorkspaceManager handles creation, checkpointing (auto-commit), merging results back, and cleanup.",
       "focusDirectory": "clawteam/workspace",
       "colorMode": "fileTypes",
       "highlightLayers": [
@@ -142,7 +142,7 @@
     {
       "id": "cli-commands",
       "title": "CLI Entry Point",
-      "description": "All of ClawTeam's power is exposed through a single CLI built with Typer. The commands.py file (2,200+ lines) defines every command: team lifecycle (spawn-team, discover, cleanup), task management (create, update, wait), messaging (send, broadcast, receive), monitoring (board show, live, attach), and workspace operations. The __main__.py enables python -m clawteam invocation.",
+      "description": "All of ClawTeam's power is exposed through a single CLI built with Typer. The commands.py file defines every command: team lifecycle (spawn-team, discover, cleanup), task management (create, update, wait), messaging (send, broadcast, receive), monitoring (board show, live, attach), and workspace operations. The __main__.py enables python -m clawteam invocation.",
       "focusDirectory": "clawteam/cli",
       "colorMode": "fileTypes",
       "highlightLayers": [
