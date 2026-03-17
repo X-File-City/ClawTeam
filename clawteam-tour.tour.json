@@ -182,7 +182,7 @@
     {
       "id": "full-picture",
       "title": "The Full Picture",
-      "description": "ClawTeam is a lightweight, decentralized multi-agent orchestration framework. No databases, no message queues — just files, git worktrees, and a clean CLI. Agents self-organize into teams, communicate through mailboxes, coordinate via shared task boards with dependency resolution, and work in full isolation. From the Python package to the Claude Code skills, everything is designed for zero-infrastructure agent swarms.",
+      "description": "ClawTeam is a lightweight and decentralized multi-agent orchestration framework. No databases, no message queues — just files, git worktrees, and a clean CLI. Agents self-organize into teams, communicate through mailboxes, coordinate via shared task boards with dependency resolution, and work in full isolation. From the Python package to the Claude Code skills, everything is designed for zero-infrastructure agent swarms.",
       "focusDirectory": "",
       "colorMode": "fileTypes"
     }
