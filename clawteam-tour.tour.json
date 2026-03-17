@@ -7,7 +7,7 @@
     {
       "id": "overview",
       "title": "Welcome to ClawTeam",
-      "description": "ClawTeam is a framework-agnostic CLI for multi-agent AI coordination. It enables teams of AI agents (Claude Code, Codex, or any CLI agent) to self-organize, communicate, and solve complex problems together — with no databases, no message queues, just files. The entire codebase lives under the clawteam/ package, with supporting docs, assets, and Claude Code skill definitions.",
+      "description": "ClawTeam is a framework-agnostic CLI for multi-agent AI coordination. It enables teams of AI agents (Codex, Claude Code, or any CLI agent) to self-organize, communicate, and solve complex problems together — with no databases, no message queues, just files. The entire codebase lives under the clawteam/ package, with supporting docs, assets, and Claude Code skill definitions.",
       "focusDirectory": "",
       "colorMode": "fileTypes"
     },
@@ -142,7 +142,7 @@
     {
       "id": "cli-commands",
       "title": "CLI Entry Point",
-      "description": "All of ClawTeam's power is exposed through a single CLI built with Typer. The commands.py file defines every command: team lifecycle (spawn-team, discover, cleanup), task management (create, update, wait), messaging (send, broadcast, receive), monitoring (board show, live, attach), and workspace operations. The __main__.py enables python -m clawteam invocation.",
+      "description": "All of ClawTeam's power is exposed through a single CLI built with Typer. The commands.py file defines every command: team lifecycle (spawn-team, discover, cleanup), task management (create, update, wait), messaging (send, broadcast, receive), monitoring (board show, live, attach), and workspace operations.",
       "focusDirectory": "clawteam/cli",
       "colorMode": "fileTypes",
       "highlightLayers": [
